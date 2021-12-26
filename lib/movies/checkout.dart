@@ -132,7 +132,7 @@ class _checkoutState extends State<checkout> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
                     Text(
-                      "Payment Method",
+                      "Payment",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 25,
@@ -165,15 +165,15 @@ class _checkoutState extends State<checkout> {
                         focusColor: Colors.black,
                       ),
                     ),
-                    SizedBox(height: 15),
-                    TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "Seat",
-                        labelText: "Choose seat number",
-                        focusColor: Colors.black,
-                      ),
-                    ),
+                    // SizedBox(height: 15),
+                    // TextField(
+                    //   decoration: InputDecoration(
+                    //     border: OutlineInputBorder(),
+                    //     hintText: "Seat",
+                    //     labelText: "Choose seat number",
+                    //     focusColor: Colors.black,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
@@ -203,5 +203,3 @@ class _checkoutState extends State<checkout> {
     );
   }
 }
-
-

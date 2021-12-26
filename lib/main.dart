@@ -4,24 +4,25 @@
 
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:hci_project/cashier/cashier.dart';
 import 'package:hci_project/movies/movies.dart';
 
 void main() {
-  runApp(DevicePreview(builder: (context) => MyApp()));
+  runApp(DevicePreview(builder: (context) => MyHomePage()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyHomePage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: MyHomePage(),
+//       debugShowCheckedModeBanner: false,
+//     );
+//   }
+// }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -38,12 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int currentIndex = 0;
   final screens = [
     mainPage(),
-    Center(
-      child: Text("data2"),
-    ),
-    Center(
-      child: Text("data3"),
-    ),
+    Center(child: Text("data2")),
+    cashier(),
   ];
 
   @override
