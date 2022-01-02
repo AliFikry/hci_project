@@ -1,0 +1,138 @@
+Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(6)),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 25,
+                              color: Colors.grey,
+                              offset: const Offset(0, 1),
+                            )
+                          ],
+                        ),
+
+                        // width: 390,
+                        width: MediaQuery.of(context).size.width,
+
+                        // height: MediaQuery.of(context).size.height *
+                        //     (snapshot.key.length / 100),
+                        // height: 150,
+                        child: Column(
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Container(
+                                padding: EdgeInsets.fromLTRB(
+                                    MediaQuery.of(context).size.width * .055,
+                                    10,
+                                    0,
+                                    5),
+                                child: Text(today == list[0]
+                                    ? "today"
+                                    : list[0].toString()),
+                              ),
+                            ),
+                            Divider(
+                              height: 2,
+                            ),
+                            // SizedBox(
+                            //   height: 5,
+                            // ),
+                            Expanded(
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * .85,
+                                // height: 190,
+                                child: FirebaseAnimatedList(
+                                    query: FirebaseDatabase.instance
+                                        .reference()
+                                        .child(
+                                            "matches/matches_by_league/Champions League/${list[0]}"),
+                                    itemBuilder: (BuildContext context,
+                                        DataSnapshot snapshots,
+                                        Animation<double> animation,
+                                        int index) {
+                                      Map data = snapshots.value;
+                                      return Container(
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Text("${data["awayTeam"]}"),
+
+                                                Text("VS"),
+                                                // Spacer(),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 30, right: 10),
+                                                  child: Text(
+                                                      "${data["homeTeam"]}"),
+                                                )
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+
+
+
+
+
+
+
+
+                      Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ExpansionTile(
+                        initiallyExpanded: true,
+                        title: Text(list[0].toString()),
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            height: MediaQuery.of(context).size.height *
+                                (.04 + .09),
+                            child: FirebaseAnimatedList(
+                                query: FirebaseDatabase.instance.reference().child(
+                                    "matches/matches_by_league/Champions League/${list[0]}"),
+                                itemBuilder: (BuildContext context,
+                                    DataSnapshot snapshots,
+                                    Animation<double> animation,
+                                    int index) {
+                                  Map data = snapshots.value;
+                                  return Column(
+                                    children: [
+                                      Container(
+                                        child: Row(
+                                          children: [
+                                            Text("${data["awayTeam"]}"),
+
+                                            Text("VS"),
+                                            // Spacer(),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 30, right: 10),
+                                              child:
+                                                  Text("${data["homeTeam"]}"),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                }),
+                          ),
+                          Text("kjsadhadfhdkjfhkjdshkjhdfsd")
+                        ],
+                      ),
+                    ),
+                  ],
+                );
